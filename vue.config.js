@@ -1,6 +1,6 @@
 module.exports = {
   pwa: {
-    name: "pomodoro"
+    name: "Pomodoro"
   },
 
   pluginOptions: {
@@ -9,6 +9,12 @@ module.exports = {
       fallbackLocale: "en",
       localeDir: "locales",
       enableInSFC: true
+    },
+    quasar: {
+      importStrategy: "manual",
+      rtlSupport: false
     }
-  }
+  },
+
+  transpileDependencies: ["quasar"]
 };
