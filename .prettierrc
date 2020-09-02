@@ -1,14 +1,18 @@
 {
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
 
-  "editor.codeActionsOnSave": {
-      "source.fixAll": true
-  },
+	"editor.codeActionsOnSave": {
+		"source.fixAll": true
+	},
 
-  "vetur.format.defaultFormatter.html": "prettyhtml",
-  "vetur.format.defaultFormatter.js": "prettier-eslint",
+	"vetur.format.defaultFormatter.html": "prettyhtml",
+	"vetur.format.defaultFormatter.js": "prettier-eslint",
 
-  "singleQuote": true,
-  "trailingComma": "all"
+	"singleQuote": true,
+	"trailingComma": "all",
+	"tabWidth": 2,
+	"arrowParens": "always",
+	"bracketSpacing": true,
+	"vueIndentScriptAndStyle": true
 }

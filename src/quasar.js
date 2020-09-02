@@ -1,13 +1,13 @@
-import Vue from "vue";
+import Vue from 'vue';
 
-import "./styles/quasar.scss";
-import lang from "quasar/lang/en-us.js";
-import "@quasar/extras/roboto-font/roboto-font.css";
-import "@quasar/extras/material-icons/material-icons.css";
-import "@quasar/extras/material-icons-outlined/material-icons-outlined.css";
-import "@quasar/extras/material-icons-round/material-icons-round.css";
-import "@quasar/extras/material-icons-sharp/material-icons-sharp.css";
-import "@quasar/extras/mdi-v4/mdi-v4.css";
+import './styles/quasar.scss';
+import lang from 'quasar/lang/en-us.js';
+import '@quasar/extras/roboto-font/roboto-font.css';
+import '@quasar/extras/material-icons/material-icons.css';
+import '@quasar/extras/material-icons-outlined/material-icons-outlined.css';
+import '@quasar/extras/material-icons-round/material-icons-round.css';
+import '@quasar/extras/material-icons-sharp/material-icons-sharp.css';
+import '@quasar/extras/mdi-v4/mdi-v4.css';
 import {
   Quasar,
   QCard,
@@ -28,7 +28,7 @@ import {
   QItemSection,
   QItemLabel,
   QInput,
-} from "quasar";
+} from 'quasar';
 
 Vue.use(Quasar, {
   config: {},
@@ -54,5 +54,5 @@ Vue.use(Quasar, {
   },
   directives: {},
   plugins: {},
-  lang: lang
+  lang: lang,
 });
