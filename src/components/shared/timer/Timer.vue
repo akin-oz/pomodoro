@@ -15,12 +15,20 @@
         >
           {{ minutes }} : {{ seconds }}
         </q-circular-progress>
-        <q-card-actions class="row justify-center">
-          <q-btn round @click="startTimer" icon="play_arrow"></q-btn>
-          <q-btn round @click="pauseTimer" icon="pause"></q-btn>
-          <q-btn round @click="stopTimer" icon="stop"></q-btn>
-        </q-card-actions>
+        <q-media-player
+          v-if="timerEnded"
+          class="hidden"
+          type="audio"
+          autoplay
+          :sources="audio.sources"
+        >
+        </q-media-player>
       </q-card-section>
+      <q-card-actions align="center">
+        <q-btn round @click="startTimer" icon="play_arrow"></q-btn>
+        <q-btn round @click="pauseTimer" icon="pause"></q-btn>
+        <q-btn round @click="stopTimer" icon="stop"></q-btn>
+      </q-card-actions>
     </q-card>
   </q-page>
 </template>
@@ -32,6 +40,18 @@
         totalSeconds,
         secondsRemaining: totalSeconds,
         intervalId: undefined,
+        timerStarted: false,
+        timerStopped: false,
+        timerPaused: false,
+        timerEnded: false,
+        audio: {
+          sources: [
+            {
+              src: './sound.wav',
+              type: 'audio/mp3',
+            },
+          ],
+        },
       };
     },
     computed: {
@@ -52,24 +72,39 @@
     },
     methods: {
       startTimer() {
-        this.intervalId = setInterval(() => {
-          this.secondsRemaining--;
-        }, 1000);
+        if (!this.timerStarted) {
+          this.timerStarted = true;
+          this.timerStopped = false;
+          this.timerPaused = false;
+          this.timerEnded = false;
+          this.intervalId = setInterval(() => {
+            this.secondsRemaining--;
+          }, 1000);
+        }
       },
       pauseTimer() {
-        const { intervalId } = this;
-        clearInterval(intervalId);
+        if (this.timerStarted) {
+          const { intervalId } = this;
+          clearInterval(intervalId);
+          this.timerPaused = true;
+        }
       },
       stopTimer() {
-        const { intervalId, totalSeconds } = this;
-        clearInterval(intervalId);
-        this.secondsRemaining = totalSeconds;
+        if (!this.timerStopped) {
+          const { intervalId, totalSeconds } = this;
+          clearInterval(intervalId);
+          this.secondsRemaining = totalSeconds;
+          this.timerStopped = true;
+          this.timerStarted = false;
+          this.timerPaused = false;
+        }
       },
     },
     watch: {
       secondsRemaining(newValue) {
         if (newValue === 0) {
-          clearInterval(this.intervalId);
+          this.timerEnded = true;
+          this.stopTimer();
         }
       },
     },

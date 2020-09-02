@@ -2,12 +2,15 @@ import Vue from 'vue';
 
 import './styles/quasar.scss';
 import lang from 'quasar/lang/en-us.js';
+import '@quasar/quasar-ui-qmediaplayer/dist/index.css';
 import '@quasar/extras/roboto-font/roboto-font.css';
 import '@quasar/extras/material-icons/material-icons.css';
 import '@quasar/extras/material-icons-outlined/material-icons-outlined.css';
 import '@quasar/extras/material-icons-round/material-icons-round.css';
 import '@quasar/extras/material-icons-sharp/material-icons-sharp.css';
 import '@quasar/extras/mdi-v4/mdi-v4.css';
+import Plugin from '@quasar/quasar-ui-qmediaplayer';
+
 import {
   Quasar,
   QCard,
@@ -60,3 +63,4 @@ Vue.use(Quasar, {
   plugins: {},
   lang: lang,
 });
+Vue.use(Plugin);
