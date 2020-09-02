@@ -28,6 +28,8 @@ import {
   QItemSection,
   QItemLabel,
   QInput,
+  QForm,
+  QCircularProgress,
 } from 'quasar';
 
 Vue.use(Quasar, {
@@ -51,6 +53,8 @@ Vue.use(Quasar, {
     QItemSection,
     QItemLabel,
     QInput,
+    QForm,
+    QCircularProgress,
   },
   directives: {},
   plugins: {},

@@ -30,6 +30,7 @@
           </q-card-section>
           <q-card-actions class="q-px-md">
             <q-btn
+              @click="handleSignin"
               unelevated
               color="light-blue-7"
               size="lg"
@@ -47,19 +48,26 @@
 </template>
 
 <script>
-export default {
-  name: 'Login',
-  data() {
-    return {
-      email: '',
-      password: '',
-    };
-  },
-};
+  export default {
+    name: 'Login',
+    methods: {
+      handleSignin(e) {
+        e.preventDefault();
+        this.$store.commit('auth/setTokenValid');
+        this.$router.push('/');
+      },
+    },
+    data() {
+      return {
+        email: '',
+        password: '',
+      };
+    },
+  };
 </script>
 
 <style>
-.q-card {
-  width: 360px;
-}
+  .q-card {
+    width: 360px;
+  }
 </style>
