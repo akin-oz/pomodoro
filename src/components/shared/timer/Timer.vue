@@ -33,12 +33,12 @@
   </q-page>
 </template>
 <script>
+  import { mapState } from 'vuex';
+
   export default {
     data() {
-      const totalSeconds = 1500;
       return {
-        totalSeconds,
-        secondsRemaining: totalSeconds,
+        secondsRemaining: undefined,
         intervalId: undefined,
         timerStarted: false,
         timerStopped: false,
@@ -55,6 +55,9 @@
       };
     },
     computed: {
+      ...mapState({
+        totalSeconds: (state) => state.timer.totalSeconds,
+      }),
       seconds() {
         const { secondsRemaining } = this;
         const secondInt = secondsRemaining % 60;
@@ -72,7 +75,7 @@
     },
     methods: {
       startTimer() {
-        if (!this.timerStarted) {
+        if (!this.timerStarted || this.timerPaused) {
           this.timerStarted = true;
           this.timerStopped = false;
           this.timerPaused = false;
@@ -106,6 +109,12 @@
           this.timerEnded = true;
           this.stopTimer();
         }
+      },
+      totalSeconds: {
+        immediate: true,
+        handler(newValue) {
+          this.secondsRemaining = newValue;
+        },
       },
     },
   };

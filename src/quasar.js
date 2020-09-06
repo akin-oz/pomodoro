@@ -33,6 +33,8 @@ import {
   QInput,
   QForm,
   QCircularProgress,
+  QSlider,
+  QTooltip,
 } from 'quasar';
 
 Vue.use(Quasar, {
@@ -58,6 +60,8 @@ Vue.use(Quasar, {
     QInput,
     QForm,
     QCircularProgress,
+    QSlider,
+    QTooltip,
   },
   directives: {},
   plugins: {},
